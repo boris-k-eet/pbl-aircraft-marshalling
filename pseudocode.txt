@@ -1,0 +1,2 @@
+if d < flash_distance: flash_LED()
+elseif d < flash_distance: flash_LED()
