@@ -3,8 +3,8 @@
 
 const int rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 
-#define TRIGGER_PIN  12  
-#define ECHO_PIN     11  
+#define TRIGGER_PIN  2  
+#define ECHO_PIN     3  
 #define MAX_DISTANCE 200 
 
 #define FLASH_DISTANCE 20
