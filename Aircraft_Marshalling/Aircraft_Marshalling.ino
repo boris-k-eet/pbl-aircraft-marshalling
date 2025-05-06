@@ -32,6 +32,7 @@ void flash_LED(){
 void setup() {
   // put your setup code here, to run once:
   pinMode(LED_PIN, OUTPUT);
+  pinMode(SECOND_LED_PIN, OUTPUT);
   Serial.begin(9600);
 }
 
@@ -43,7 +44,7 @@ void loop() {
 
   if (distance < STOP_DISTANCE){
     // LED is ON and the LCD displays prints 'STOP!'
-    digitalWrite(LED_PIN, 0);
+    digitalWrite(LED_PIN, 1);
     lcd.print("STOP!");
 
   } else if (distance < FLASH_DISTANCE){
