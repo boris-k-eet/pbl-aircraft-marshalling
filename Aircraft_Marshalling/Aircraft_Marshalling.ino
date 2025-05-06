@@ -32,12 +32,14 @@ void flash_LED(){
 void setup() {
   // put your setup code here, to run once:
   pinMode(LED_PIN, OUTPUT);
+  Serial.begin(9600);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   lcd.clear();
   int distance = sonar.ping_cm();
+  Serial.println(distance);
 
   if (distance < STOP_DISTANCE){
     // LED is ON and the LCD displays prints 'STOP!'
@@ -57,4 +59,5 @@ void loop() {
     lcd.print(distance);
   }
 
+  delay(500);
 }
