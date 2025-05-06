@@ -37,11 +37,20 @@ void loop() {
 
   if (distance < STOP_DISTANCE){
     // LED is ON and the LCD displays prints 'STOP!'
+    digitalWrite(LED_PIN, 0);
+    lcd.print("STOP!")
 
   } else if (distance < FLASHING_DISTANCE){
     // LED is flashing and the LCD displays the distance
+    flash_LED();
+    lcd.print("Distance: ");
+    lcd.print(distance);
+  
   } else {
     // LED is off and the LCD displays the distance
+    digitalWrite(LED_PIN, 0);
+    lcd.print("Distance: ");
+    lcd.print(distance);
   }
 
 }
