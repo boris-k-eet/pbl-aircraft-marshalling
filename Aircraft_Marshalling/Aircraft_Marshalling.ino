@@ -11,6 +11,7 @@ const int rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 #define STOP_DISTANCE  5
 
 #define LED_PIN 5
+#define SECOND_LED_PIN 6
 
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); 
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);  // Create an LCD object
@@ -19,8 +20,11 @@ void flash_LED(){
   state = digitalRead(LED_PIN);
   if (state == 0){
     digitalWrite(LED_PIN, 1);
+    digitalWrite(SECOND_LED_PIN, 1);
+
   } else if (state == 1){
     digitalWrite(LED_PIN, 0);
+    digitalWrite(SECOND_LED_PIN, 0);
   }
 
 }
