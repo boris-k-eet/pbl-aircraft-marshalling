@@ -33,11 +33,11 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   lcd.clear();
-  int distance = sonar.ping();
+  int distance = sonar.ping_cm();
 
   if (distance < STOP_DISTANCE){
     // LED is ON and the LCD displays prints 'STOP!'
-    
+
   } else if (distance < FLASHING_DISTANCE){
     // LED is flashing and the LCD displays the distance
   } else {
