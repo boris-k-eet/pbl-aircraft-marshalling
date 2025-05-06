@@ -17,7 +17,7 @@ NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);  // Create an LCD object
 
 void flash_LED(){
-  state = digitalRead(LED_PIN);
+  bool state = digitalRead(LED_PIN);
   if (state == 0){
     digitalWrite(LED_PIN, 1);
     digitalWrite(SECOND_LED_PIN, 1);
@@ -42,9 +42,9 @@ void loop() {
   if (distance < STOP_DISTANCE){
     // LED is ON and the LCD displays prints 'STOP!'
     digitalWrite(LED_PIN, 0);
-    lcd.print("STOP!")
+    lcd.print("STOP!");
 
-  } else if (distance < FLASHING_DISTANCE){
+  } else if (distance < FLASH_DISTANCE){
     // LED is flashing and the LCD displays the distance
     flash_LED();
     lcd.print("Distance: ");
