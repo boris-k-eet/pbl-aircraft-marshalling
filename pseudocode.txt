@@ -1,2 +1,5 @@
-if d < flash_distance: flash_LED()
-elseif d < flash_distance: flash_LED()
+d = distance
+if d < stop_distance: LED is on and LCD displays "STOP!"
+elseif d < flash_distance: flash LED, LCD displays the distance
+else: LED off LCD displays the distance 
+
