@@ -1,21 +1,24 @@
 #include <NewPing.h>
 #include <LiquidCrystal.h>  
 
+// LCD pins
 const int rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 
+// Ultrasound sensor configuration
 #define TRIGGER_PIN  2  
 #define ECHO_PIN     3  
 #define MAX_DISTANCE 200 
 
-#define FLASH_DISTANCE 20
-#define STOP_DISTANCE  5
+#define FLASH_DISTANCE 20 // When the distance is less than this value the lights start flashing
+#define STOP_DISTANCE  5 // When the distance is less than this value the lights stay ON and the LCD displays "STOP!"
 
 #define LED_PIN 5
 #define SECOND_LED_PIN 6
 
-NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); 
+NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // Create a sonar (ultrasound sensor) object
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);  // Create an LCD object
 
+// Functions flashes LED
 void flash_LED(){
   bool state = digitalRead(LED_PIN);
   if (state == 0){
@@ -30,16 +33,15 @@ void flash_LED(){
 }
 
 void setup() {
-  // put your setup code here, to run once:
+  // set pin modes and initialize the serial monitor
   pinMode(LED_PIN, OUTPUT);
   pinMode(SECOND_LED_PIN, OUTPUT);
   Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  lcd.clear();
-  int distance = sonar.ping_cm();
+  lcd.clear(); // clear the screen
+  int distance = sonar.ping_cm(); // get the distance
   Serial.println(distance);
 
   if (distance < STOP_DISTANCE){
@@ -62,5 +64,5 @@ void loop() {
     lcd.print(distance);
   }
 
-  delay(500);
+  delay(500); // to make sure the lights flash at a constant rate
 }
