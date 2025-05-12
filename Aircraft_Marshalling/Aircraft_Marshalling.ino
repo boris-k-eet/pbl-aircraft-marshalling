@@ -32,18 +32,7 @@ void flash_LED(){
 
 }
 
-void setup() {
-  // set pin modes and initialize the serial monitor
-  pinMode(LED_PIN, OUTPUT);
-  pinMode(SECOND_LED_PIN, OUTPUT);
-  Serial.begin(9600);
-}
-
-void loop() {
-  lcd.clear(); // clear the screen
-  int distance = sonar.ping_cm(); // get the distance
-  Serial.println(distance);
-
+void aircraft_marshalling(int distance){
   if (distance < STOP_DISTANCE){
     // LED is ON and the LCD displays prints 'STOP!'
     digitalWrite(LED_PIN, 1);
@@ -63,6 +52,21 @@ void loop() {
     lcd.print("Distance: ");
     lcd.print(distance);
   }
+}
+
+void setup() {
+  // set pin modes and initialize the serial monitor
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(SECOND_LED_PIN, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  lcd.clear(); // clear the screen
+  int distance = sonar.ping_cm(); // get the distance
+  Serial.println(distance);
+
+  aircraft_marshalling(distance);
 
   delay(500); // to make sure the lights flash at a constant rate
 }
