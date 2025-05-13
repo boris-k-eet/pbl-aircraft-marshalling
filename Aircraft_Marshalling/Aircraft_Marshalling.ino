@@ -32,25 +32,25 @@ void flash_LED(){
 
 }
 
-void aircraft_marshalling(int distance){
-  if (distance < STOP_DISTANCE){
+void aircraft_marshalling(int dist){
+  if (dist < STOP_DISTANCE){
     // LED is ON and the LCD displays prints 'STOP!'
     digitalWrite(LED_PIN, 1);
     digitalWrite(SECOND_LED_PIN, 1);
     lcd.print("STOP!");
 
-  } else if (distance < FLASH_DISTANCE){
+  } else if (dist < FLASH_DISTANCE){
     // LED is flashing and the LCD displays the distance
     flash_LED();
     lcd.print("Distance: ");
-    lcd.print(distance);
+    lcd.print(dist);
   
   } else {
     // LED is off and the LCD displays the distance
     digitalWrite(LED_PIN, 0);
     digitalWrite(SECOND_LED_PIN, 0);
     lcd.print("Distance: ");
-    lcd.print(distance);
+    lcd.print(dist);
   }
 }
 
