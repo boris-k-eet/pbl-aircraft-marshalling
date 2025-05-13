@@ -33,7 +33,9 @@ void flash_LED(){
 }
 
 void aircraft_marshalling(int dist){
-  if (dist < STOP_DISTANCE){
+  if (dist == 0){
+    // do nothing
+  } else if (dist < STOP_DISTANCE){
     // LED is ON and the LCD displays prints 'STOP!'
     digitalWrite(LED_PIN, 1);
     digitalWrite(SECOND_LED_PIN, 1);
